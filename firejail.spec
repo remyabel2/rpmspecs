@@ -4,7 +4,7 @@
 
 Name: firejail
 Version: 0.9.70
-Release: 5%{?dist}
+Release: 6%{?dist}
 Summary: Linux namespaces sandbox program
 BuildRequires: gcc make python3-devel
 BuildRequires: libselinux-devel
@@ -28,6 +28,10 @@ using Linux namespaces. It includes a sandbox profile for Mozilla Firefox.
 %configure --enable-selinux
 %make_build
 
+%pre
+getent group firejail >/dev/null || groupadd -r firejail
+exit 0
+
 %install
 %make_install
 chmod 0755 %{buildroot}%{_libdir}/%{name}/lib*.so
@@ -47,7 +51,7 @@ done
 %{_bindir}/firecfg
 %{_bindir}/firemon
 %{_bindir}/jailcheck
-%{_bindir}/%{name}
+%attr(4750,root,%{name}) %verify(not user group mode) %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/vim/vimfiles
@@ -63,6 +67,9 @@ done
 %config(noreplace) %{_sysconfdir}/%{name}
 
 %changelog
+* Sun Jul 31 2022 Tommy Nguyen - 0.9.70-6
+- Harden firejail permissions
+
 * Sat Jul 30 2022 Tommy Nguyen - 0.9.70-5
 - Update to version 0.9.70
 
