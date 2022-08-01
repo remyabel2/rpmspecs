@@ -3,7 +3,7 @@
 
 Name:          libusbmuxd
 Version:       2.0.2^20220504git%{shortcommit}
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       Client library USB multiplex daemon for Apple's iOS devices
 
 License:       LGPLv2+
@@ -17,8 +17,6 @@ BuildRequires: autoconf automake libtool
 BuildRequires: make
 BuildRequires: libimobiledevice-glue-devel
 Requires: usbmuxd
-Obsoletes: libusbmuxd < %{version}-%{release} 
-Obsoletes: libusbmuxd-devel < %{version}-%{release}
 
 %description
 libusbmuxd is the client library used for communicating with Apple's iPod Touch,
@@ -36,7 +34,6 @@ Utilities for Apple's iOS devices
 %package devel
 Summary: Development package for %{name}
 Requires: %{name}%{?_isa} = %{version}-%{release}
-Obsoletes: usbmuxd-devel < 1.0.9
 
 %description devel
 Files for development with %{name}.
@@ -80,6 +77,9 @@ make check
 %{_libdir}/*.so
 
 %changelog
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220504git36ffb7a-2
+- Remove Obsoletes tags
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220504git36ffb7a-1
 - Update to latest master version
 

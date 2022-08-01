@@ -5,7 +5,7 @@
 
 Name:     libplist
 Version:  2.2.0^20220405git%{shortcommit}
-Release:  1%{?dist}
+Release:  2%{?dist}
 Summary:  Library for manipulating Apple Binary and XML Property Lists
 
 License:  LGPLv2+
@@ -20,8 +20,6 @@ BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: automake autoconf libtool
 BuildRequires: make
-Obsoletes: libplist < %{version}-%{release}
-Obsoletes: libplist-devel < %{version}-%{release}
 
 %description
 libplist is a library for manipulating Apple Binary and XML Property Lists
@@ -99,11 +97,14 @@ make check
 %{python3_sitearch}/plist*
 
 %changelog
-* Mon Aug 1 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220405gitdb93bae-1
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220405gitdb93bae-2
+- Remove Obsoletes tags
+
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220405gitdb93bae-1
 - Fix versioning scheme
 - Add Obsoletes tag
 
-* Mon Aug 1 2022 Tommy Nguyen <remyabel@gmail.com> - 20220405gitdb93bae
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 20220405gitdb93bae
 - Update to latest master
 
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-8

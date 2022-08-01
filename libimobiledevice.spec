@@ -3,7 +3,7 @@
 
 Name:          libimobiledevice
 Version:       1.3.0^20220702git%{shortcommit}
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -22,9 +22,6 @@ BuildRequires: autoconf automake libtool
 BuildRequires: make
 BuildRequires: libimobiledevice-glue-devel
 Requires: usbmuxd
-Obsoletes: libimobiledevice < %{version}-%{release} 
-Obsoletes: libimobiledevice-devel < %{version}-%{release} 
-Obsoletes: libimobiledevice-utils < %{version}-%{release} 
 
 %description
 libimobiledevice is a library for connecting to mobile devices including phones 
@@ -80,6 +77,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_includedir}/*
 
 %changelog
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702gitgit2eec1b9-2
+- Remove Obsolete tags
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702gitgit2eec1b9-1
 - Fix versioning scheme
 
