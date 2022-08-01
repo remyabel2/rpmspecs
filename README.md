@@ -14,10 +14,15 @@ considered necessary (like hardening the Firejail permissions.)
 
 ```
 dnf copr enable remyabel/firejail
+# This is required to be installed first.
+dnf copr enable remyabel/libimobiledevice-glue
 dnf copr enable remyabel/usbmuxd
 dnf copr enable remyabel/libusbmuxd
 dnf copr enable remyabel/libimobiledevice
-dnf copr enable remyabel/libimobiledevice-glue
 
-sudo dnf install firejail usbmuxd libusbmuxd libimobiledevice libimobiledevice-glue
+sudo dnf install firejail libimobiledevice-glue usbmuxd libusbmuxd libimobiledevice
+
+sudo usermod -a -G firejail $USER
 ```
+
+Alternatively, add yourself to `firejail.users`. See `man firejail.users`.
