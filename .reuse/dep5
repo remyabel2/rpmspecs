@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: rpmspecs
+Upstream-Contact: remyabel <remyabel@gmail.com>
+Source: https://git.sr.ht/~remyabel/rpmspecs
+
+# Sample paragraph, commented out:
+#
+# Files: src/*
+# Copyright: $YEAR $NAME <$CONTACT>
+# License: ...
