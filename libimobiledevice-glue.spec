@@ -2,8 +2,8 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           libimobiledevice-glue
-Version:        0
-Release:        20220523git%{shortcommit}%{?dist}
+Version:        0^20220523git%{shortcommit}
+Release:        1%{?dist}
 Summary:        Glue library for libimobiledevice projects.
 
 License:       LGPLv2+
@@ -58,5 +58,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 0^20220523gitd2ff796-1
+- Fix versioning scheme
+
 * Sat Jul 30 2022 Tommy Nguyen <remyabel@gmail.com> - 20220523gitd2ff796
 - Initial commit

@@ -2,8 +2,8 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          usbmuxd
-Version:       1.1.1
-Release:       20220620git%{shortcommit}%{?dist}
+Version:       1.1.1^20220620git%{shortcommit}
+Release:       1%{?dist}
 Summary:       Daemon for communicating with Apple's iOS devices
 # All code is dual licenses as GPLv3+ or GPLv2+, except libusbmuxd which is LGPLv2+.
 License:       GPLv3+ or GPLv2+
@@ -79,6 +79,9 @@ exit 0
 %{_datadir}/man/man8/usbmuxd.8.gz
 
 %changelog
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-1
+- Fix versioning scheme
+
 * Sat Jul 30 2022 Tommy Nguyen <remyabel@gmail.com> - 20220620gitf50e52f
 - Update to latest master version
 
