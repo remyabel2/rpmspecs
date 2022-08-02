@@ -29,3 +29,12 @@ sudo usermod -a -G firejail $USER
 ```
 
 Alternatively, add yourself to `firejail.users`. See `man firejail.users`.
+
+# Development
+
+To test locally in mock:
+
+```
+# Defaults to $PWD if unset
+env RPMBUILD_ROOT="some_path" ./mock-build.sh
+```
