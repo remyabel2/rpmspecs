@@ -38,3 +38,10 @@ To test locally in mock:
 # Defaults to $PWD if unset
 env RPMBUILD_ROOT="some_path" ./mock-build.sh
 ```
+
+To build in batches for COPR:
+
+```
+# Defaults to $PWD if unset
+env RPMBUILD_ROOT="some_path" ./copr-build.sh
+```
