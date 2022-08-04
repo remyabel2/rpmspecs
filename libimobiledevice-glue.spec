@@ -2,7 +2,7 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           libimobiledevice-glue
-Version:        0^20220523git%{shortcommit}
+Version:        1.0.0^20220523git%{shortcommit}
 Release:        1%{?dist}
 Summary:        Glue library for libimobiledevice projects.
 
@@ -10,7 +10,8 @@ License:       LGPLv2+
 URL:           http://www.libimobiledevice.org/
 Source:        https://github.com/libimobiledevice/%{name}/archive/%{commit}/%{name}-%{commit}.tar.gz
 
-BuildRequires: libplist-devel
+BuildRequires: pkgconfig
+BuildRequires: pkgconfig(libplist-2.0) >= 2.2.0
 BuildRequires: git-core
 BuildRequires: autoconf automake libtool
 
@@ -58,6 +59,10 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 1.0.0^20220523gitd2ff796-1
+- Fix versioning scheme
+- Use pkgconfig for dependencies
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 0^20220523gitd2ff796-1
 - Fix versioning scheme
 

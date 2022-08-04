@@ -3,7 +3,7 @@
 
 Name:          usbmuxd
 Version:       1.1.1^20220620git%{shortcommit}
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       Daemon for communicating with Apple's iOS devices
 # All code is dual licenses as GPLv3+ or GPLv2+, except libusbmuxd which is LGPLv2+.
 License:       GPLv3+ or GPLv2+
@@ -12,13 +12,13 @@ Source:        https://github.com/libimobiledevice/%{name}/archive/%{commit}/%{n
 
 BuildRequires: make
 BuildRequires: gcc
-BuildRequires: libimobiledevice-devel
-BuildRequires: libplist-devel
-BuildRequires: libusbx-devel
+BuildRequires: pkgconfig
+BuildRequires: pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires: pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0
+BuildRequires: pkgconfig(libusb-1.0) >= 1.0.9
+BuildRequires: pkgconfig(libimobiledevice-1.0) >= 1.3.0
 BuildRequires: systemd
 BuildRequires: autoconf libtool automake git
-BuildRequires: libimobiledevice-glue-devel
-BuildRequires: libusbmuxd-devel
 
 Requires(pre): shadow-utils
 Requires(post): systemd
@@ -78,6 +78,9 @@ exit 0
 %{_datadir}/man/man8/usbmuxd.8.gz
 
 %changelog
+* Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-3
+- Use pkgconfig for dependencies
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-2
 - Remove Obsoletes tags
 

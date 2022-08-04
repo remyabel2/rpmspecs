@@ -13,14 +13,14 @@ Patch:         libimobiledevice-configure-use-static-version.patch
 
 BuildRequires: openssl-devel
 BuildRequires: libgcrypt-devel
-BuildRequires: libplist-devel
 BuildRequires: libtasn1-devel
-BuildRequires: libusbmuxd-devel
-BuildRequires: libusbx-devel
+BuildRequires: pkgconfig
+BuildRequires: pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires: pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0
+BuildRequires: pkgconfig(libusbmuxd-2.0) >= 2.0.2
 BuildRequires: git-core
 BuildRequires: autoconf automake libtool
 BuildRequires: make
-BuildRequires: libimobiledevice-glue-devel
 Requires: usbmuxd
 
 %description

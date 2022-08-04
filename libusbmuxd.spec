@@ -3,7 +3,7 @@
 
 Name:          libusbmuxd
 Version:       2.0.2^20220504git%{shortcommit}
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       Client library USB multiplex daemon for Apple's iOS devices
 
 License:       LGPLv2+
@@ -12,10 +12,11 @@ Source:        https://github.com/libimobiledevice/%{name}/archive/%{commit}/%{n
 Patch:         libusbmuxd-configure-use-static-version.patch
 
 BuildRequires: gcc
-BuildRequires: libplist-devel
+BuildRequires: pkgconfig
+BuildRequires: pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires: pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0
 BuildRequires: autoconf automake libtool
 BuildRequires: make
-BuildRequires: libimobiledevice-glue-devel
 Requires: usbmuxd
 
 %description
@@ -77,6 +78,9 @@ make check
 %{_libdir}/*.so
 
 %changelog
+* Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220504git36ffb7a-3
+- Use pkgconfig for dependencies
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220504git36ffb7a-2
 - Remove Obsoletes tags
 
