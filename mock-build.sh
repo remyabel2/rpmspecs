@@ -22,11 +22,18 @@ pushd "${RPMBUILD_ROOT:-$PWD}"
         exit 1
     fi
     rm SRPMS/*.src.rpm
-    mock --clean
+    mock -r fedora-36-x86_64 --clean
     mock -r fedora-36-x86_64 --init
     for spec in SPECS/*.spec;
     do
         mock -r fedora-36-x86_64 --buildsrpm --spec "$spec" --sources SOURCES/ --resultdir SRPMS/
     done
     mock -r fedora-36-x86_64 --rebuild --chain "${srpms[@]}"
+    mock -r fedora-35-x86_64 --clean
+    mock -r fedora-35-x86_64 --init
+    for spec in SPECS/*.spec;
+    do
+        mock -r fedora-35-x86_64 --buildsrpm --spec "$spec" --sources SOURCES/ --resultdir SRPMS/
+    done
+    mock -r fedora-35-x86_64 --rebuild --chain "${srpms[@]}"
 popd
