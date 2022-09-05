@@ -1,9 +1,9 @@
-%global commit 36ffb7ab6e2a7e33bd1b56398a88895b7b8c615a
+%global commit 6426362e5cbad7284368b7fe70363f6b3251f94c
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          libusbmuxd
-Version:       2.0.2^20220504git%{shortcommit}
-Release:       3%{?dist}
+Version:       2.0.2^20220904git%{shortcommit}
+Release:       4%{?dist}
 Summary:       Client library USB multiplex daemon for Apple's iOS devices
 
 License:       LGPLv2+
@@ -78,6 +78,9 @@ make check
 %{_libdir}/*.so
 
 %changelog
+* Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220904git6426362-4
+- Update to latest master
+
 * Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220504git36ffb7a-3
 - Use pkgconfig for dependencies
 

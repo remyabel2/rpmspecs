@@ -1,9 +1,9 @@
-%global commit 2eec1b9a172354c8521123a767d998b17bd2ac18
+%global commit b5ce44449216195d02df386a1799efdaffe45a67
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          libimobiledevice
-Version:       1.3.0^20220702git%{shortcommit}
-Release:       2%{?dist}
+Version:       1.3.0^20220904git%{shortcommit}
+Release:       3%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -77,10 +77,13 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_includedir}/*
 
 %changelog
-* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702gitgit2eec1b9-2
+* Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitb5ce444-3
+- Update to latest master
+
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702git2eec1b9-2
 - Remove Obsolete tags
 
-* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702gitgit2eec1b9-1
+* Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220702git2eec1b9-1
 - Fix versioning scheme
 
 * Sat Jul 30 2022 Tommy Nguyen <remyabel@gmail.com> - 20220702git2eec1b9

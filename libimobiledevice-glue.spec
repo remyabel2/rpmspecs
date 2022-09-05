@@ -1,9 +1,9 @@
-%global commit d2ff7969dcd0a12e4f18f63dab03e6cd03054fcb
+%global commit 7eaa28ea9529b69da6b1721ba3e791e7ea5e950b
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           libimobiledevice-glue
-Version:        1.0.0^20220523git%{shortcommit}
-Release:        1%{?dist}
+Version:        1.0.0^20220905git%{shortcommit}
+Release:        2%{?dist}
 Summary:        Glue library for libimobiledevice projects.
 
 License:       LGPLv2+
@@ -59,6 +59,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 1.0.0^20220905git7eaa28e-2
+- Update to latest master
+
 * Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 1.0.0^20220523gitd2ff796-1
 - Fix versioning scheme
 - Use pkgconfig for dependencies

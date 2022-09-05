@@ -1,11 +1,11 @@
-%global commit db93bae96d64140230ad050061632531644c46ad
+%global commit c3af449543795ad4d3ab178120ff69e90fdd2cc8
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 %{!?python3_sitearch: %global python_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 Name:     libplist
-Version:  2.2.0^20220405git%{shortcommit}
-Release:  2%{?dist}
+Version:  2.2.0^20220904git%{shortcommit}
+Release:  3%{?dist}
 Summary:  Library for manipulating Apple Binary and XML Property Lists
 
 License:  LGPLv2+
@@ -57,8 +57,8 @@ NOCONFIGURE=1 ./autogen.sh
 %build
 export CC=%{__cc}
 export CXX=%{__cxx}
-export CFLAGS='%optflags -fno-strict-aliasing'
-export CXXFLAGS='%optflags -fno-strict-aliasing'
+export CFLAGS='%optflags'
+export CXXFLAGS='%optflags'
 export PYTHON='python3'
 %configure --disable-static
 
@@ -97,6 +97,9 @@ make check
 %{python3_sitearch}/plist*
 
 %changelog
+* Mon Sep 5 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220904gitc3af449-3
+- Update to latest master, which contains strict aliasing fixes
+
 * Mon Aug 01 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220405gitdb93bae-2
 - Remove Obsoletes tags
 
