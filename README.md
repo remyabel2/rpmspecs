@@ -16,16 +16,15 @@ considered necessary (like hardening the Firejail permissions.)
 # Instructions
 
 ```
-dnf copr enable remyabel/firejail
 dnf copr enable remyabel/libimobiledevice
-dnf copr enable remyabel/usbmuxd2
-
-sudo dnf install libplist-devel libimobiledevice-glue usbmuxd libusbmuxd libimobiledevice
+dnf install libplist-devel libimobiledevice-glue usbmuxd libusbmuxd libimobiledevice
 # or
-sudo dnf install libgeneral libplist-devel libimobiledevice-glue usbmuxd2 libusbmuxd libimobiledevice
+dnf copr enable remyabel/usbmuxd2
+dnf install libgeneral-devel libplist-devel libimobiledevice-glue libusbmuxd libimobiledevice usbmuxd2
 
-sudo dnf install firejail
-sudo usermod -a -G firejail $USER
+dnf copr enable remyabel/firejail
+dnf install firejail
+usermod -a -G firejail $USER
 ```
 
 Alternatively, add yourself to `firejail.users`. See `man firejail.users`.
