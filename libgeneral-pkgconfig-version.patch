@@ -1,0 +1,10 @@
+--- libgeneral.pc.in.orig	2022-09-09 20:46:36.410821059 -0400
++++ libgeneral.pc.in	2022-09-09 20:46:46.501671016 -0400
+@@ -6,6 +6,6 @@
+ Name: libgeneral
+ Description: Mostly macros used by other projects
+ 
+-Version: @VERSION_COMMIT_COUNT@
++Version: 63
+ Libs: -L${libdir} -lgeneral
+ Cflags: -I${includedir}
