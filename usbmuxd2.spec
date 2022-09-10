@@ -3,7 +3,7 @@
 
 Name:           usbmuxd2
 Version:        0^20220909git%{shortcommit}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A reimplementation of usbmuxd in C++ 
 
 License:        GPLv3 
@@ -22,7 +22,7 @@ BuildRequires: pkgconfig(libimobiledevice-1.0) >= 1.3.0
 BuildRequires: pkgconfig(avahi-client) >= 0.7
 BuildRequires: systemd
 BuildRequires: autoconf libtool automake git-core
-Conflicts: usbmuxd
+Obsoletes: usbmuxd
 
 Requires(pre): shadow-utils
 Requires(post): systemd
@@ -83,5 +83,8 @@ exit 0
 
 
 %changelog
+* Sat Sep 10 2022 Tommy Nguyen <remyabel@gmail.com> - 0^20220909git753b79e-2
+- Use obsoletes instead of conflicts
+
 * Sat Sep 10 2022 Tommy Nguyen <remyabel@gmail.com>
 - Initial package
