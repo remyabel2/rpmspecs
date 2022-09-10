@@ -3,7 +3,7 @@
 
 Name:           usbmuxd2
 Version:        0^20220909git%{shortcommit}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A reimplementation of usbmuxd in C++ 
 
 License:        GPLv3 
@@ -83,6 +83,9 @@ exit 0
 
 
 %changelog
+* Sat Sep 10 2022 Tommy Nguyen <remyabel@gmail.com> - 0^20220909git753b79e-3
+- Use provides instead of obsoletes
+
 * Sat Sep 10 2022 Tommy Nguyen <remyabel@gmail.com> - 0^20220909git753b79e-2
 - Use obsoletes instead of conflicts
 
