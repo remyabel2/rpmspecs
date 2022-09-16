@@ -22,7 +22,7 @@ BuildRequires: pkgconfig(libimobiledevice-1.0) >= 1.3.0
 BuildRequires: pkgconfig(avahi-client) >= 0.7
 BuildRequires: systemd
 BuildRequires: autoconf libtool automake git-core
-Provides: usbmuxd
+Provides: usbmuxd >= 1.1.1
 
 Requires(pre): shadow-utils
 Requires(post): systemd
