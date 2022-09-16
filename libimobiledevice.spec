@@ -47,7 +47,7 @@ Utilites for use with libimobiledevice.
 ./autogen.sh
 
 %build
-%configure --disable-static --enable-openssl --enable-dev-tools --without-cython
+%configure --disable-static --enable-openssl --enable-dev-tools --without-cython --disable-wireless-pairing
 # Remove rpath as per https://fedoraproject.org/wiki/Packaging/Guidelines#Beware_of_Rpath
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
