@@ -1,9 +1,9 @@
-%global commit b5ce44449216195d02df386a1799efdaffe45a67
+%global commit ef7cf8eb545d9ed3fb1f351376dec71608d0127b
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          libimobiledevice
 Version:       1.3.0^20220904git%{shortcommit}
-Release:       5%{?dist}
+Release:       6%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -77,6 +77,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_includedir}/*
 
 %changelog
+* Fri Sep 16 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitef7cf8e-6
+- bump
+
 * Fri Sep 16 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitb5ce444-5
 - Don't build third party libraries
 
