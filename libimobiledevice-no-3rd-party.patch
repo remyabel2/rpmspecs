@@ -1,0 +1,45 @@
+diff '--color=auto' -Naur libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/configure.ac libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/configure.ac
+--- libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/configure.ac	2022-09-16 00:55:33.306369468 -0400
++++ libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/configure.ac	2022-09-16 00:56:01.828850441 -0400
+@@ -285,9 +285,6 @@
+ 
+ AC_CONFIG_FILES([
+ Makefile
+-3rd_party/Makefile
+-3rd_party/ed25519/Makefile
+-3rd_party/libsrp6a-sha512/Makefile
+ common/Makefile
+ src/Makefile
+ src/libimobiledevice-1.0.pc
+diff '--color=auto' -Naur libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/Makefile.am libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/Makefile.am
+--- libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/Makefile.am	2022-09-16 00:55:33.297369655 -0400
++++ libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/Makefile.am	2022-09-16 00:56:06.881766134 -0400
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ ACLOCAL_AMFLAGS = -I m4
+-SUBDIRS = 3rd_party common src include $(CYTHON_SUB) tools docs
++SUBDIRS = common src include $(CYTHON_SUB) tools docs
+ 
+ EXTRA_DIST = \
+ 	docs \
+diff '--color=auto' -Naur libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/src/Makefile.am libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/src/Makefile.am
+--- libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67-orig/src/Makefile.am	2022-09-16 00:55:33.363368289 -0400
++++ libimobiledevice-b5ce44449216195d02df386a1799efdaffe45a67/src/Makefile.am	2022-09-16 00:55:57.960914978 -0400
+@@ -1,7 +1,5 @@
+ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/include \
+-	-I$(top_srcdir)/3rd_party/libsrp6a-sha512 \
+-	-I$(top_srcdir)/3rd_party/ed25519 \
+ 	-I$(top_srcdir)
+ 
+ AM_CFLAGS = \
+@@ -22,9 +20,6 @@
+ 
+ lib_LTLIBRARIES = libimobiledevice-1.0.la
+ libimobiledevice_1_0_la_LIBADD = $(top_builddir)/common/libinternalcommon.la
+-if HAVE_WIRELESS_PAIRING
+-libimobiledevice_1_0_la_LIBADD += $(top_builddir)/3rd_party/ed25519/libed25519.la $(top_builddir)/3rd_party/libsrp6a-sha512/libsrp6a-sha512.la
+-endif
+ libimobiledevice_1_0_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBIMOBILEDEVICE_SO_VERSION) -no-undefined
+ if DARWIN
+ libimobiledevice_1_0_la_LDFLAGS += -framework CoreFoundation -framework SystemConfiguration
