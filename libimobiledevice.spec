@@ -3,7 +3,7 @@
 
 Name:          libimobiledevice
 Version:       1.3.0^20220904git%{shortcommit}
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -77,6 +77,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_includedir}/*
 
 %changelog
+* Fri Sep 16 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitb5ce444-4
+- Disabled wireless pairing for compatibility with new crypto policy
+
 * Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitb5ce444-3
 - Update to latest master
 
