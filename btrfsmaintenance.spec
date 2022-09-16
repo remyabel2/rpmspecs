@@ -70,7 +70,6 @@ install -m 644 -D btrfs-defrag.timer %{buildroot}%{_unitdir}
 install -m 644 -D btrfs-scrub.timer %{buildroot}%{_unitdir}
 install -m 644 -D btrfs-trim.timer %{buildroot}%{_unitdir}
 install -m 755 -d %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcbtrfsmaintenance-refresh
 
 # config
 install -m 0755 -d %{buildroot}%{_sysconfdir}/%{name}
@@ -113,7 +112,6 @@ fi
 %{_unitdir}/btrfs-defrag.timer
 %{_unitdir}/btrfs-scrub.timer
 %{_unitdir}/btrfs-trim.timer
-%{_sbindir}/rcbtrfsmaintenance-refresh
 
 %changelog
 * Mon Aug 29 2022 Tommy Nguyen <remyabel@gmail.com> 0.5^20200730be42cb6-1
