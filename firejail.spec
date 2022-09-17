@@ -4,7 +4,7 @@
 
 Name: firejail
 Version: 0.9.70
-Release: 6%{?dist}
+Release: 7%{?dist}
 Summary: Linux namespaces sandbox program
 BuildRequires: gcc make python3-devel
 BuildRequires: libselinux-devel
@@ -56,7 +56,6 @@ done
 %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/vim/vimfiles
 %{_datarootdir}/zsh/site-functions/_%{name}
-%{_docdir}/%{name}/COPYING
 %{_docdir}/%{name}/profile.template
 %{_docdir}/%{name}/redirect_alias-profile.template
 %{_docdir}/%{name}/syscalls.txt
@@ -67,6 +66,9 @@ done
 %config(noreplace) %{_sysconfdir}/%{name}
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 0.9.70-7
+- Fix lint errors and warnings
+
 * Sun Jul 31 2022 Tommy Nguyen - 0.9.70-6
 - Harden firejail permissions
 

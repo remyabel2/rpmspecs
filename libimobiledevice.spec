@@ -3,7 +3,7 @@
 
 Name:          libimobiledevice
 Version:       1.3.0^20220904git%{shortcommit}
-Release:       6%{?dist}
+Release:       7%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -56,9 +56,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
-%{?ldconfig_scriptlets}
 
 %files
 %{!?_licensedir:%global license %%doc}
@@ -77,6 +75,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_includedir}/*
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitef7cf8e-7
+- Fix lint errors and warnings
+
 * Fri Sep 16 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitef7cf8e-6
 - bump
 

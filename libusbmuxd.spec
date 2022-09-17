@@ -3,7 +3,7 @@
 
 Name:          libusbmuxd
 Version:       2.0.2^20220904git%{shortcommit}
-Release:       4%{?dist}
+Release:       5%{?dist}
 Summary:       Client library USB multiplex daemon for Apple's iOS devices
 
 License:       LGPLv2+
@@ -54,12 +54,10 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %check
 make check
 
-%{?ldconfig_scriptlets}
 
 %files
 %{!?_licensedir:%global license %%doc}
@@ -78,6 +76,9 @@ make check
 %{_libdir}/*.so
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220904git6426362-5
+- Fix lint errors and warnings
+
 * Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 2.0.2^20220904git6426362-4
 - Update to latest master
 

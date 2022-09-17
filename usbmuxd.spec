@@ -3,7 +3,7 @@
 
 Name:          usbmuxd
 Version:       1.1.1^20220620git%{shortcommit}
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       Daemon for communicating with Apple's iOS devices
 # All code is dual licenses as GPLv3+ or GPLv2+, except libusbmuxd which is LGPLv2+.
 License:       GPLv3+ or GPLv2+
@@ -49,9 +49,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
-%{?ldconfig_scriptlets}
 
 %pre
 getent group usbmuxd >/dev/null || groupadd -r usbmuxd -g 113
@@ -78,6 +76,9 @@ exit 0
 %{_datadir}/man/man8/usbmuxd.8.gz
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-4
+- Fix lint errors and warnings
+
 * Thu Aug 04 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-3
 - Use pkgconfig for dependencies
 

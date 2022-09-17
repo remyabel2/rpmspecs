@@ -3,8 +3,8 @@
 
 Name:           libimobiledevice-glue
 Version:        1.0.0^20220905git%{shortcommit}
-Release:        2%{?dist}
-Summary:        Glue library for libimobiledevice projects.
+Release:        3%{?dist}
+Summary:        Glue library for libimobiledevice projects
 
 License:       LGPLv2+
 URL:           http://www.libimobiledevice.org/
@@ -16,7 +16,8 @@ BuildRequires: git-core
 BuildRequires: autoconf automake libtool
 
 %description
-Library with common code used by the libraries and tools around the libimobiledevice project.
+Library with common code used by the libraries and tools around the
+libimobiledevice project
 
 %package        devel
 Summary:        Development files for %{name}
@@ -42,9 +43,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
-%{?ldconfig_scriptlets}
 
 %files
 %{!?_licensedir:%global license %%doc}
@@ -59,6 +58,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 1.0.0^20220905git7eaa28e-3
+- Fix lint errors and warnings
+
 * Mon Sep 05 2022 Tommy Nguyen <remyabel@gmail.com> - 1.0.0^20220905git7eaa28e-2
 - Update to latest master
 

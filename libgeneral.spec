@@ -1,11 +1,11 @@
 Name:           libgeneral
 Version:        63
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A collection of macros used in tihmstar projects.
 
-License:        LGPLv2.1
+License:        LGPLv2
 URL:            https://github.com/tihmstar/libgeneral
-Source0:        https://github.com/tihmstar/%{name}/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/tihmstar/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         libgeneral-pkgconfig-version.patch
 Patch1:         libgeneral-configure-use-static-version.patch
 
@@ -46,10 +46,6 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
-
-
-%{?ldconfig_scriptlets}
 
 
 %files
@@ -64,5 +60,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 63-2
+- Fix lint errors and warnings
+
 * Sat Sep 10 2022 Tommy Nguyen <remyabel@gmail.com>
 - Initial package
