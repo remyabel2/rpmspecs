@@ -5,7 +5,7 @@
 
 Name:     libplist
 Version:  2.2.0^20220904git%{shortcommit}
-Release:  3%{?dist}
+Release:  4%{?dist}
 Summary:  Library for manipulating Apple Binary and XML Property Lists
 
 License:  LGPLv2+
@@ -13,13 +13,13 @@ URL:      http://www.libimobiledevice.org/
 Source:   https://github.com/libimobiledevice/%{name}/archive/%{commit}/%{name}-%{commit}.tar.gz
 Patch:    libplist-configure-use-static-version.patch
 
-BuildRequires: chrpath
 BuildRequires: gcc gcc-c++
 BuildRequires: python3-Cython
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: automake autoconf libtool
 BuildRequires: make
+BuildRequires: doxygen
 
 %description
 libplist is a library for manipulating Apple Binary and XML Property Lists
@@ -61,22 +61,18 @@ export CFLAGS='%optflags'
 export CXXFLAGS='%optflags'
 export PYTHON='python3'
 %configure --disable-static
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %make_build V=1
+%{__make} docs
 
 %install
 %make_install
 
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
-
-chrpath --delete $RPM_BUILD_ROOT%{_bindir}/plistutil
-chrpath --delete $RPM_BUILD_ROOT%{_libdir}/libplist++-2.0.so.3*
-chrpath --delete $RPM_BUILD_ROOT%{python3_sitearch}/plist*
-
 %check
 make check
 
-%{?ldconfig_scriptlets}
 
 %files
 %license COPYING.LESSER
@@ -87,6 +83,7 @@ make check
 %{_mandir}/man1/*
 
 %files devel
+%doc docs/html
 %{_libdir}/pkgconfig/libplist-2.0.pc
 %{_libdir}/pkgconfig/libplist++-2.0.pc
 %{_libdir}/libplist-2.0.so
@@ -97,6 +94,9 @@ make check
 %{python3_sitearch}/plist*
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220904gitc3af449-4
+- Build docs and remove outdated practices
+
 * Mon Sep 5 2022 Tommy Nguyen <remyabel@gmail.com> - 2.2.0^20220904gitc3af449-3
 - Update to latest master, which contains strict aliasing fixes
 
