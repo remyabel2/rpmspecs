@@ -12,6 +12,9 @@ if [[ "$arg" == *"--libimobiledevice"* ]]; then
 elif [[ "$arg" == *"--usbmuxd2"* ]]; then
     project="usbmuxd2"
     packages=("libplist" "libimobiledevice-glue" "libusbmuxd" "libimobiledevice" "libgeneral" "usbmuxd2")
+elif [[ "$arg" == *"--hardened_malloc"* ]]; then
+    project="hardened_malloc"
+    packages=("hardened_malloc")
 elif [[ "$arg" == *"--firejail"* ]]; then
     project="firejail"
     packages=("firejail")

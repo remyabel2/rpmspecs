@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-packages=("libplist" "libimobiledevice-glue" "libusbmuxd" "libimobiledevice" "usbmuxd")
+packages=("firejail" "hardened_malloc" "libplist" "libimobiledevice-glue" "libusbmuxd" "libimobiledevice" "usbmuxd")
 srpms=()
 
 for package in "${packages[@]}"; do
