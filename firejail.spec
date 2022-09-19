@@ -45,7 +45,7 @@ do
 done
 
 %files
-%doc README RELNOTES CONTRIBUTING.md
+%doc README RELNOTES CONTRIBUTING.md COPYING
 %license COPYING
 
 %{_bindir}/firecfg
