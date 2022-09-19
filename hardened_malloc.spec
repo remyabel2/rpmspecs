@@ -5,7 +5,7 @@
 
 Name:           hardened_malloc
 Version:        13^20220917git%{shortcommit}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Hardened allocator designed for modern systems
 
 License:        MIT
@@ -29,8 +29,8 @@ dynamic library for use on other Linux-based platforms.
 
 
 %build
-%{__make} VARIANT=light
-echo %{_libdir}/libhardened_malloc-light.so > out-light/libhardened-malloc.conf
+%{__make} CC=clang CXX=clang++ VARIANT=light
+echo %{_libdir}/libhardened-malloc/libhardened_malloc-light.so > out-light/libhardened-malloc.conf
 
 %install
 %{__install} -Dm 0755 out-light/libhardened_malloc-light.so %{buildroot}%{_libdir}/libhardened-malloc/libhardened_malloc-light.so
@@ -48,5 +48,8 @@ echo 'vm.max_map_count = 1048576' > %{buildroot}%{_sysconfdir}/sysctl.d/hardened
 
 
 %changelog
+* Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 13^20220917git2250130-2
+- Fix typo
+
 * Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 13^20220917git2250130-1
 - Initial package
