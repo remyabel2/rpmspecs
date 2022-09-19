@@ -5,7 +5,7 @@
 
 Name:           hardened_malloc
 Version:        13^20220917git%{shortcommit}
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Hardened allocator designed for modern systems
 
 License:        MIT
@@ -30,24 +30,32 @@ dynamic library for use on other Linux-based platforms.
 
 %build
 %{__make} CC=clang CXX=clang++ VARIANT=light
-echo %{_libdir}/libhardened-malloc/libhardened_malloc-light.so > out-light/libhardened-malloc.conf
+echo %{_libdir}/libhardened-malloc/libhardened_malloc-light.so > out-light/ld.so.preload
 
 %install
 %{__install} -Dm 0755 out-light/libhardened_malloc-light.so %{buildroot}%{_libdir}/libhardened-malloc/libhardened_malloc-light.so
-%{__install} -Dm 0644 out-light/libhardened-malloc.conf %{buildroot}%{_sysconfdir}/ld.so.preload.d/libhardened-malloc.conf
+%{__install} -Dm 0644 out-light/ld.so.preload %{buildroot}%{_sysconfdir}/ld.so.preload
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/sysctl.d
 echo 'vm.max_map_count = 1048576' > %{buildroot}%{_sysconfdir}/sysctl.d/hardened_malloc.conf
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %license LICENSE
 %doc README.md
 %config(noreplace) %{_sysconfdir}/sysctl.d/hardened_malloc.conf
-%config(noreplace) %{_sysconfdir}/ld.so.preload.d/libhardened-malloc.conf
+%config(noreplace) %{_sysconfdir}/ld.so.preload
 %{_libdir}/libhardened-malloc/libhardened_malloc-light.so
 
 
 %changelog
+* Mon Sep 19 2022 Tommy Nguyen <remyabel@gmail.com> - 13^20220917git2250130-4
+- ld.so.preload.d doesn't work; need to edit ld.so.preload directly
+
+* Mon Sep 19 2022 Tommy Nguyen <remyabel@gmail.com> - 13^20220917git2250130-3
+- ldconfig needs to be called when using ld.so.preload.d
+
 * Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 13^20220917git2250130-2
 - Fix typo
 
