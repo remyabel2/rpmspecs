@@ -1,9 +1,9 @@
-%global commit ef7cf8eb545d9ed3fb1f351376dec71608d0127b
+%global commit b314f04bd791b263cf43fadc6ac0756e67ab4ed0
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          libimobiledevice
 Version:       1.3.0^20220904git%{shortcommit}
-Release:       7%{?dist}
+Release:       8%{?dist}
 Summary:       Library for connecting to mobile devices
 
 License:       LGPLv2+
@@ -75,6 +75,9 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 %{_includedir}/*
 
 %changelog
+* Thu Oct 06 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitb314f04-8
+- Update to latest snapshot
+
 * Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 1.3.0^20220904gitef7cf8e-7
 - Fix lint errors and warnings
 

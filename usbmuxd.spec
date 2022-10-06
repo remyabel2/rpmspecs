@@ -1,9 +1,9 @@
-%global commit f50e52f3393a9149ac65fdda8f0d425109efc7fe
+%global commit 12e24e4bd161c76631c77244f63ff02ef18f251d
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:          usbmuxd
 Version:       1.1.1^20220620git%{shortcommit}
-Release:       4%{?dist}
+Release:       5%{?dist}
 Summary:       Daemon for communicating with Apple's iOS devices
 # All code is dual licenses as GPLv3+ or GPLv2+, except libusbmuxd which is LGPLv2+.
 License:       GPLv3+ or GPLv2+
@@ -76,6 +76,9 @@ exit 0
 %{_datadir}/man/man8/usbmuxd.8.gz
 
 %changelog
+* Thu Oct 06 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620git12e24e4-5
+- Update to latest snapshot
+
 * Sat Sep 17 2022 Tommy Nguyen <remyabel@gmail.com> - 1.1.1^20220620gitf50e52f-4
 - Fix lint errors and warnings
 
